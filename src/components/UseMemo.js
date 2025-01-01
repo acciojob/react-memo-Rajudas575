@@ -10,11 +10,13 @@ const expensiveCalculation = (num) => {
 
   return result;
 };
+
 const UseMemo = () => {
   const [number, setNumber] = useState(1000000000);
   const [text, setText] = useState("");
 
-  const calculation = useMemo(() => expensiveCalculation(number));
+  // Corrected the useMemo call
+  const calculation = useMemo(() => expensiveCalculation(number), [number]);
 
   return (
     <div>
