@@ -20,7 +20,7 @@ const App = () => {
       <h2>My todos</h2>
       <button onClick={incrementCount}>Add Todo</button>
       <p>Count: {count}</p>
-      <button onClick={incrementCount}>Increment</button>
+      <button onClick={incrementCount}>+</button>
       <UseMemoDemo />
       <ReactMemoDemo todos={todos} />
     </div>
