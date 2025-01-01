@@ -18,9 +18,11 @@ const App = () => {
     <div>
       <h1>React.useMemo</h1>
       <h2>My todos</h2>
-      <button onClick={incrementCount}>Add Todo</button>
-      <p>Count: {count}</p>
-      <button onClick={incrementCount}>+</button>
+      <button onClick={addTodo}>Add Todo</button>
+      <p>
+        Count: {count}
+        <button onClick={incrementCount}>+</button>
+      </p>
       <UseMemoDemo />
       <ReactMemoDemo todos={todos} />
     </div>
