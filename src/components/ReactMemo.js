@@ -30,7 +30,7 @@ const ReactMemo = ({ todos }) => {
       <input
         type="text"
         value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}  
+        onChange={(e) => setNewTodo(e.target.value)}
         placeholder="Add a task"
       />
       <button onClick={addCustomTodo}>Add Skill</button>
