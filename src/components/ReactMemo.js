@@ -11,7 +11,7 @@ const TodoList = React.memo(({ todos }) => {
   );
 });
 
-const ReactMemoDemo = ({ todos }) => {
+const ReactMemo = ({ todos }) => {
   const [newTodo, setNewTodo] = useState("");
   const [customTodos, setCustomTodos] = useState(todos);
 
@@ -30,7 +30,7 @@ const ReactMemoDemo = ({ todos }) => {
       <input
         type="text"
         value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
+        onChange={(e) => setNewTodo(e.target.value)}  
         placeholder="Add a task"
       />
       <button onClick={addCustomTodo}>Add Skill</button>
@@ -39,4 +39,4 @@ const ReactMemoDemo = ({ todos }) => {
   );
 };
 
-export default ReactMemoDemo;
+export default ReactMemo;
