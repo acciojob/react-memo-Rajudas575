@@ -6,6 +6,10 @@ const App = () => {
   const [todos, setTodos] = useState(["HTML", "CSS", "JavaScript", "React"]);
   const [count, setCount] = useState(0);
 
+  const addTodo = () => {
+    setTodos([...todos, "New todo"]);
+  };
+
   const incrementCount = () => {
     setCount(count + 1);
   };
@@ -16,6 +20,7 @@ const App = () => {
       <h2>My todos</h2>
       <button onClick={incrementCount}>Add Todo</button>
       <p>Count: {count}</p>
+      <button onClick={incrementCount}>Increment</button>
       <UseMemoDemo />
       <ReactMemoDemo todos={todos} />
     </div>
@@ -23,5 +28,3 @@ const App = () => {
 };
 
 export default App;
-
-
