@@ -11,7 +11,7 @@ const expensiveCalculation = (num) => {
   return result;
 };
 
-const UseMemoDemo = () => {
+const UseMemo = () => {
   const [number, setNumber] = useState(1000000000);
   const [text, setText] = useState("");
 
@@ -25,4 +25,4 @@ const UseMemoDemo = () => {
   );
 };
 
-export default UseMemoDemo;
+export default UseMemo;
