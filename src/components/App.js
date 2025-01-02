@@ -16,15 +16,19 @@ const App = () => {
 
   return (
     <div>
-      <h1>React.useMemo</h1>
-      <h2>My todos</h2>
-      <button id="add-todo-button" onClick={addTodo}>Add Todo</button>
+      <h1>React App</h1>
+      <h2>My Todos</h2>
+      <button id="add-todo-button" onClick={addTodo}>
+        Add Todo
+      </button>
       <p>
         Count: {count}
-        <button onClick={incrementCount}>+</button>
+        <button id="increment-button" onClick={incrementCount}>
+          +
+        </button>
       </p>
       <UseMemo />
-      <ReactMemo todos={todos} />
+      <ReactMemo todos={todos} setTodos={setTodos} />
     </div>
   );
 };
