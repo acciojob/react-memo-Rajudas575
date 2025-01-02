@@ -11,13 +11,12 @@ const TodoList = React.memo(({ todos }) => {
   );
 });
 
-const ReactMemo = ({ todos }) => {
+const ReactMemo = ({ todos, setTodos }) => {
   const [newTodo, setNewTodo] = useState("");
-  const [customTodos, setCustomTodos] = useState(todos);
 
   const addCustomTodo = () => {
     if (newTodo.length > 5) {
-      setCustomTodos([...customTodos, newTodo]);
+      setTodos([...todos, newTodo]);
       setNewTodo("");
     } else {
       alert("Task must be more than 5 characters long.");
@@ -26,7 +25,7 @@ const ReactMemo = ({ todos }) => {
 
   return (
     <div>
-      <h1>React.memo</h1>
+      <h2>Add Custom Task</h2>
       <input
         id="add-skill-input"
         type="text"
@@ -34,8 +33,10 @@ const ReactMemo = ({ todos }) => {
         onChange={(e) => setNewTodo(e.target.value)}
         placeholder="Add a task"
       />
-      <button id="add-skill-button"  onClick={addCustomTodo}>Add Skill</button>
-      <TodoList todos={customTodos} />
+      <button id="add-skill-button" onClick={addCustomTodo}>
+        Add Skill
+      </button>
+      <TodoList todos={todos} />
     </div>
   );
 };
