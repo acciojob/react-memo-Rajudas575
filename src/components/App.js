@@ -18,7 +18,7 @@ const App = () => {
     <div>
       <h1>React.useMemo</h1>
       <h2>My todos</h2>
-      <button onClick={addTodo}>Add Todo</button>
+      <button id="add-todo-button" onClick={addTodo}>Add Todo</button>
       <p>
         Count: {count}
         <button onClick={incrementCount}>+</button>
