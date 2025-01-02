@@ -28,12 +28,13 @@ const ReactMemo = ({ todos }) => {
     <div>
       <h1>React.memo</h1>
       <input
+        id="add-skill-input"
         type="text"
         value={newTodo}
         onChange={(e) => setNewTodo(e.target.value)}
         placeholder="Add a task"
       />
-      <button onClick={addCustomTodo}>Add Skill</button>
+      <button id="add-skill-button"  onClick={addCustomTodo}>Add Skill</button>
       <TodoList todos={customTodos} />
     </div>
   );
