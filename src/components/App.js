@@ -1,36 +1,54 @@
-import React, { useState } from "react";
-import UseMemo from "./UseMemo";
-import ReactMemo from "./ReactMemo";
+import React, { useState, useEffect, useMemo } from 'react';
+import ReactMemo from './ReactMemo';
+import UseMemo from './UseMemo';
 
-const App = () => {
-  const [todos, setTodos] = useState(["HTML", "CSS", "JavaScript", "React"]);
-  const [count, setCount] = useState(0);
+function App() {
+  const [todos, setTodos] = useState([]);
+  const [counter, setCounter] = useState(0);
+  const [taskInput, setTaskInput] = useState('');
+  const [customTask, setCustomTask] = useState('');
 
-  const addTodo = () => {
-    setTodos([...todos, "New todo"]);
-  };
+  // Adding a new default todo when the component mounts
+  useEffect(() => {
+    setTodos((prevTodos) => [...prevTodos, 'New todo']);
+  }, []);
 
-  const incrementCount = () => {
-    setCount(count + 1);
+  // useMemo to optimize filtering tasks
+  const filteredTodos = useMemo(() => {
+    return todos.filter((todo) => todo.length > 5);
+  }, [todos]);
+
+  // Increment counter
+  const incrementCounter = () => setCounter(counter + 1);
+
+  // Add custom task
+  const handleSubmit = () => {
+    if (taskInput.length > 5) {
+      setTodos([...todos, taskInput]);
+      setTaskInput('');
+    } else {
+      alert('Task should be more than 5 characters');
+    }
   };
 
   return (
     <div>
-      <h1>React App</h1>
-      <h2>My Todos</h2>
-      <button id="add-todo-button" onClick={addTodo}>
-        Add Todo
-      </button>
-      <p>
-        Count: {count}
-        <button id="increment-button" onClick={incrementCount}>
-          +
-        </button>
-      </p>
+      <h1>Task Management</h1>
+
+      <ReactMemo todos={filteredTodos} />
+
+      <input
+        type="text"
+        value={taskInput}
+        onChange={(e) => setTaskInput(e.target.value)}
+      />
+      <button onClick={handleSubmit}>Submit Custom Task</button>
+
+      <button onClick={incrementCounter}>Increment Counter</button>
+      <p>Counter Value: {counter}</p>
       <UseMemo />
-      <ReactMemo todos={todos} setTodos={setTodos} />
     </div>
   );
-};
+}
 
 export default App;
