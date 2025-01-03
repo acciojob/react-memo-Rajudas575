@@ -1,36 +1,33 @@
 import React, { useState, useMemo } from "react";
 
-fconst [todos, setTodos] = useState([]);
-  const [count, setCount] = useState(0);
+const expensiveCalculation = (num) => {
+  console.log("Performing an expensive calculation...");
+  let result = 0;
+  for (let i = 0; i < num; i++) {
+    result = i + 1;
+  }
+  return result;
+};
 
-  const todoCount = useMemo(() => {
-    console.log("Calculating todo count...");
-    return todos.length;
-  }, [todos]);
+const UseMemo = () => {
+  const [number, setNumber] = useState(1000000000);
+  const [text, setText] = useState("");
 
-  const addTodo = () => {
-    setTodos((prevTodos) => [...prevTodos, "New Todo"]);
-  };
+  const calculation = useMemo(() => expensiveCalculation(number), [number]);
+
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>useMemo Todo App</h1>
-      <button onClick={addTodo}>Add Todo</button>
-      <ul>
-        {todos.map((todo, index) => (
-          <li key={index}>{todo}</li>
-        ))}
-      </ul>
-      <div>Total Todos: {todoCount}</div>
-
-      <hr />
-
-      <div>
-        <h2>Counter Example (Unrelated to Todos)</h2>
-        <p>Counter: {count}</p>
-        <button onClick={() => setCount(count + 1)}>Increment Counter</button>
-      </div>
+    <div>
+      <h2>Expensive Calculation</h2>
+      <p>Result: {calculation}</p>
+      <input
+        id="memo-input"
+        type="text"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Type something"
+      />
     </div>
   );
-}
+};
 
 export default UseMemo;
