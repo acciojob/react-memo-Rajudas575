@@ -1,33 +1,20 @@
-import React, { useState, useMemo } from "react";
+import React, { useMemo } from 'react';
 
-const expensiveCalculation = (num) => {
-  console.log("Performing an expensive calculation...");
-  let result = 0;
-  for (let i = 0; i < num; i++) {
-    result = i + 1;
-  }
-  return result;
-};
+function UseMemo() {
+  const [count, setCount] = React.useState(0);
 
-const UseMemo = () => {
-  const [number, setNumber] = useState(1000000000);
-  const [text, setText] = useState("");
-
-  const calculation = useMemo(() => expensiveCalculation(number), [number]);
+  const expensiveComputation = useMemo(() => {
+    console.log('Expensive computation is running...');
+    return count * 2; // Simulating an expensive computation
+  }, [count]); // Only recompute when count changes
 
   return (
     <div>
-      <h2>Expensive Calculation</h2>
-      <p>Result: {calculation}</p>
-      <input
-        id="memo-input"
-        type="text"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Type something"
-      />
+      <h3>UseMemo Example</h3>
+      <p>Computed value: {expensiveComputation}</p>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
     </div>
   );
-};
+}
 
 export default UseMemo;
