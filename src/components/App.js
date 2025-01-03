@@ -35,17 +35,33 @@ function App() {
     <div>
       <h1>Task Management</h1>
 
+      {/* Display todos with React.memo */}
       <ReactMemo todos={filteredTodos} />
 
+      {/* Input for new custom tasks */}
       <input
         type="text"
         value={taskInput}
         onChange={(e) => setTaskInput(e.target.value)}
+        data-testid="task-input"  // Add data-testid here
       />
-      <button onClick={handleSubmit}>Submit Custom Task</button>
+      <button
+        onClick={handleSubmit}
+        data-testid="submit-task-button"  // Add data-testid here
+      >
+        Submit Custom Task
+      </button>
 
-      <button onClick={incrementCounter}>Increment Counter</button>
+      {/* Increment counter */}
+      <button
+        onClick={incrementCounter}
+        data-testid="increment-button"  // Add data-testid here
+      >
+        Increment Counter
+      </button>
       <p>Counter Value: {counter}</p>
+
+      {/* UseMemo component */}
       <UseMemo />
     </div>
   );
